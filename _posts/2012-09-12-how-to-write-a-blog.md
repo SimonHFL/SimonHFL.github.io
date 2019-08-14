@@ -42,9 +42,7 @@ In general, there exist two approaches to generating artificial examples of erro
 
 **Rule-based generation** The top two contributions in the restricted track both used a rule-based approach.
 
-[Grundkiewicz et al.](https://kheafield.com/papers/edinburgh/bea19.pdf)base their error generation approach on confusion sets extracted from the spell checker Aspell, which bases its suggestions on both lexical and phonological similarity.
-
-With a probability matching the word-error rate in the development set, a word is either deleted, swapped with its adjacent word, substituted with a word from its confusion set, or a random word is inserted. Additionally, in order to handle spelling errors, lexical noise is introduced to words, by using the same operations above on the character level.
+[Grundkiewicz et al.](https://kheafield.com/papers/edinburgh/bea19.pdf)base their error generation approach on confusion sets extracted from the spell checker Aspell, which bases its suggestions on both lexical and phonological similarity.With a probability matching the word-error rate in the development set, a word is either deleted, swapped with its adjacent word, substituted with a word from its confusion set, or a random word is inserted. Additionally, in order to handle spelling errors, lexical noise is introduced to words, by using the same operations above on the character level.
 
 The runner up, [Choe et al.](https://www.aclweb.org/anthology/W19-4423), attempt to make realistic errors by inserting n-gram patterns from real errors into correct text. They also employ rules for creating specific error types such as preposition, noun number and verb errors. When comparing their error generation approach with one based on random replacements, deletions, insertions and reordering, they see clear benefits. However, the difference is evened out if the model is fine-tuned on real errors.
 
@@ -57,17 +55,13 @@ The runner up, [Choe et al.](https://www.aclweb.org/anthology/W19-4423), attempt
 **Weighted Maximum Likelihood Estimation** Since Grammatical Error Correction systems tend to converge to a local optimum, where the model often simply copies the input unchanged to the output, [Grundkiewicz et al.](https://kheafield.com/papers/edinburgh/bea19.pdf) and [Náplava et al.](https://www.aclweb.org/anthology/W19-4419) modify the MLE loss function to give higher weight to tokens that should be changed.
 
 **Domain adaptation** Several approaches are suggested for dealing with the variance in error types and frequency across different domains. In one approach, [Náplava et al.](https://www.aclweb.org/anthology/W19-4419) generate their training set by oversampling a smaller dataset that shares the domain of the test set.
-
-As an alternative to oversampling, [Choe et al.](https://www.aclweb.org/anthology/W19-4423)use a sequential transfer learning approach.
-
-This way, their model is trained in a three-stage process: 1) de-noising auto-encoder 2) training 3) fine-tuning.  At each stage, the model is trained on a progressively smaller dataset that is closer to the test domain.
+As an alternative to oversampling, [Choe et al.](https://www.aclweb.org/anthology/W19-4423)use a sequential transfer learning approach. This way, their model is trained in a three-stage process: 1) de-noising auto-encoder 2) training 3) fine-tuning.  At each stage, the model is trained on a progressively smaller dataset that is closer to the test domain.
 
 **Multi-task learning** [Yuan et al.](https://www.aclweb.org/anthology/W19-4424)use the Grammatical Error Detection task as an auxiliary learning objective – both by labelling each input token as correct or incorrect and by binary classification if the sentence is correct or not. Their system performs very well on error detection, suggesting that the auxiliary detection task was beneficial.
 
 ## Conclusion
 
 The impressive performance of systems in the BEA 2019 shared task show that the Grammatical Error Correction field has taken a great leap forward in the 5 years since the previous shared task, CONLL14. In particular, a lot of success has been achieved by modelling the problem as a low-resource neural machine translation task. Even in this relatively narrow setting, systems are still taking many different directions and many different techniques are being applied.
-
 Going forward, each of the components I have listed should be explored further, to develop a set of best practices that can serve as the basis for industrial systems and future research directions.
 
 
