@@ -19,6 +19,7 @@ When describing the more detailed components I divide them into three areas:
 2.	**Data**: The (artificial) data used to train the model
 3.	**Training**: The training procedure
 
+
 ## Model
 
 **Architecture** &nbsp; The vast majority of submissions are based on a neural machine translation approach, with two-thirds using the transformer architecture while the rest are based on a convolutional sequence-to-sequence architectureor a combination of the two. When comparing the two architectures, [Yuan et al.](https://www.aclweb.org/anthology/W19-4424) see a very large performance gain favoring the transformer model.
