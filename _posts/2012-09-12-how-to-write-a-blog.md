@@ -1,9 +1,20 @@
 ---
 layout: post
-title: Welcome to Jekyll!
+title: >-
+  The BEA 2019 shared task: Techniques, tweaks, and tricks for Grammatical Error
+  Correction
 published: true
-subtitle: This
+subtitle: >-
+  This post presents an overview of the approaches and techniques used in the
+  BEA 2019 shared task on Grammatical Error Correction.
 ---
+The recent BEA shared task on Grammatical Error Correction had a total of 24 participating teams with many interesting approaches to the problem – many of them achieving very impressive results! A wide range of techniques, tweaks and tricks were used and in order to present a more easily comprehensible overview, I have composed a list of my main takeaways.
+
+Looking through the submissions, two overall trends are clear:
+1.	Neural machine translation approaches are dominating. Previous state-of-the-art approaches, based on rules, classifiers and statistical machine translation, have now been left in the dust.
+2.	It has become standard practice to train systems on massive amounts of artificially generated examples of errors or weakly supervised data (e.g. from the Wikipedia revision history).
+
+
 
 # Welcome
 
