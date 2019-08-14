@@ -18,12 +18,12 @@ When describing the more detailed components I divide them into three areas:
 1.	**Model**: The model’s architecture and decoding techniques
 2.	**Data**: The (artificial) data used to train the model
 3.	**Training**: The training procedure
-
+---
 ### Model
 
 **Architecture** &nbsp; The vast majority of submissions are based on a neural machine translation approach, with two-thirds using the transformer architecture while the rest are based on a convolutional sequence-to-sequence architectureor a combination of the two. When comparing the two architectures, [Yuan et al.](https://www.aclweb.org/anthology/W19-4424) see a very large performance gain favoring the transformer model.\
 [Choe et al.](https://www.aclweb.org/anthology/W19-4423) also take advantage of the copy augmented transformer architecture. This was originally suggested for Grammatical Error Correction by [Zhao et al.](https://arxiv.org/pdf/1903.00138.pdf) who showed improvements by incorporating an output mechanism that allows copying an input token. This makes sense, as whenever an error correction system is not correcting an error, it is simply copying the input.
-
+___
 **Re-ranking** &nbsp; The two top systems in the restricted trackalso re-rank the output sentences from the beam search.\
 [Choe et al.](https://www.aclweb.org/anthology/W19-4423) notice that many of their model&#39;s corrections are unnatural or incorrect, which they improve by re-ranking using a pre-trained neural language model. In addition, [Grundkiewicz et al.](https://kheafield.com/papers/edinburgh/bea19.pdf) use a right-to-left neural language model as a feature when re-ranking – the motivation being that a right-to-left model can complement the standard left-to-right decoding.
 Other approaches use error detection models for re-ranking: [Yuan et al.](https://www.aclweb.org/anthology/W19-4424)re-rank based on features derived from an error detection system while [Kaneko et al.](https://www.aclweb.org/anthology/W19-4422) fine-tune BERT on a sentence level error detection task and use its predictions as a feature for re-ranking. Both these approaches see improved overall score – especially recall, as systems are pushed towards correcting more errors.
