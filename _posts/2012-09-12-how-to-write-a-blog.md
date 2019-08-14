@@ -22,14 +22,11 @@ When describing the more detailed components I divide them into three areas:
 ## Model
 
 **Architecture** &nbsp; The vast majority of submissions are based on a neural machine translation approach, with two-thirds using the transformer architecture while the rest are based on a convolutional sequence-to-sequence architectureor a combination of the two. When comparing the two architectures, [Yuan et al.](https://www.aclweb.org/anthology/W19-4424) see a very large performance gain favoring the transformer model.
-
 [Choe et al.](https://www.aclweb.org/anthology/W19-4423) also take advantage of the copy augmented transformer architecture. This was originally suggested for Grammatical Error Correction by [Zhao et al.](https://arxiv.org/pdf/1903.00138.pdf) who showed improvements by incorporating an output mechanism that allows copying an input token. This makes sense, as whenever an error correction system is not correcting an error, it is simply copying the input.
 
 **Re-ranking**     The two top systems in the restricted trackalso re-rank the output sentences from the beam search.
 
-[Choe et al.](https://www.aclweb.org/anthology/W19-4423) notice that many of their model&#39;s corrections are unnatural or incorrect, which they improve by re-ranking using a pre-trained neural language model.
-
-In addition, [Grundkiewicz et al.](https://kheafield.com/papers/edinburgh/bea19.pdf) use a right-to-left neural language model as a feature when re-ranking – the motivation being that a right-to-left model can complement the standard left-to-right decoding.
+[Choe et al.](https://www.aclweb.org/anthology/W19-4423) notice that many of their model&#39;s corrections are unnatural or incorrect, which they improve by re-ranking using a pre-trained neural language model. In addition, [Grundkiewicz et al.](https://kheafield.com/papers/edinburgh/bea19.pdf) use a right-to-left neural language model as a feature when re-ranking – the motivation being that a right-to-left model can complement the standard left-to-right decoding.
 
 Other approaches use error detection models for re-ranking: [Yuan et al.](https://www.aclweb.org/anthology/W19-4424)re-rank based on features derived from an error detection system while [Kaneko et al.](https://www.aclweb.org/anthology/W19-4422) fine-tune BERT on a sentence level error detection task and use its predictions as a feature for re-ranking. Both these approaches see improved overall score – especially recall, as systems are pushed towards correcting more errors.
 
@@ -40,7 +37,6 @@ Other approaches use error detection models for re-ranking: [Yuan et al.](https:
 ## Data
 
 In general, there exist two approaches to generating artificial examples of errors:
-
 1. Rule-based, using error statistics gathered from real data and confusion sets consisting of words that typically are mistakenly confused
 2. Back-translation, where a correction model is trained in reverse to insert errors into correct text
 
