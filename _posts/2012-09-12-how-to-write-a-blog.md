@@ -52,12 +52,12 @@ The runner up, [Choe et al.](https://www.aclweb.org/anthology/W19-4423), attempt
 
 ### Training
 
-**Checkpoint averaging** &nbsp; [Náplava et al.](https://www.aclweb.org/anthology/W19-4419)see improved performance and lower variance by having the weights of the final model being an average of a number of previous checkpoints. For their final model, they end up averaging the 8 latest checkpoints.
+**Checkpoint averaging** &nbsp; [Náplava et al.](https://www.aclweb.org/anthology/W19-4419) see improved performance and lower variance by having the weights of the final model being an average of a number of previous checkpoints. For their final model, they end up averaging the 8 latest checkpoints.
 
 **Weighted Maximum Likelihood Estimation** &nbsp; Since Grammatical Error Correction systems tend to converge to a local optimum, where the model often simply copies the input unchanged to the output, [Grundkiewicz et al.](https://kheafield.com/papers/edinburgh/bea19.pdf) and [Náplava et al.](https://www.aclweb.org/anthology/W19-4419) modify the MLE loss function to give higher weight to tokens that should be changed.
 
 **Domain adaptation** &nbsp; Several approaches are suggested for dealing with the variance in error types and frequency across different domains. In one approach, [Náplava et al.](https://www.aclweb.org/anthology/W19-4419) generate their training set by oversampling a smaller dataset that shares the domain of the test set.<br/>
-As an alternative to oversampling, [Choe et al.](https://www.aclweb.org/anthology/W19-4423)use a sequential transfer learning approach. This way, their model is trained in a three-stage process: 1) de-noising auto-encoder 2) training 3) fine-tuning.  At each stage, the model is trained on a progressively smaller dataset that is closer to the test domain.
+As an alternative to oversampling, [Choe et al.](https://www.aclweb.org/anthology/W19-4423) use a sequential transfer learning approach. This way, their model is trained in a three-stage process: 1) de-noising auto-encoder 2) training 3) fine-tuning.  At each stage, the model is trained on a progressively smaller dataset that is closer to the test domain.
 
 **Multi-task learning** &nbsp; [Yuan et al.](https://www.aclweb.org/anthology/W19-4424) use the Grammatical Error Detection task as an auxiliary learning objective &mdash; both by labelling each input token as correct or incorrect and by binary classification if the sentence is correct or not. Their system performs very well on error detection, suggesting that the auxiliary detection task was beneficial.
 
