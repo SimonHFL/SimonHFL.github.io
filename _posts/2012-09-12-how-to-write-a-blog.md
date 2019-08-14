@@ -19,8 +19,8 @@ When describing the more detailed components I divide them into three areas:
 2.	**Data**: The (artificial) data used to train the model
 3.	**Training**: The training procedure
 
-
-## Model
+<br/><br/>
+### Model
 
 **Architecture** &nbsp; The vast majority of submissions are based on a neural machine translation approach, with two-thirds using the transformer architecture while the rest are based on a convolutional sequence-to-sequence architectureor a combination of the two. When comparing the two architectures, [Yuan et al.](https://www.aclweb.org/anthology/W19-4424) see a very large performance gain favoring the transformer model.
 [Choe et al.](https://www.aclweb.org/anthology/W19-4423) also take advantage of the copy augmented transformer architecture. This was originally suggested for Grammatical Error Correction by [Zhao et al.](https://arxiv.org/pdf/1903.00138.pdf) who showed improvements by incorporating an output mechanism that allows copying an input token. This makes sense, as whenever an error correction system is not correcting an error, it is simply copying the input.
