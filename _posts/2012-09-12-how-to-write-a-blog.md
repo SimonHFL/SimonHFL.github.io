@@ -25,9 +25,7 @@ When describing the more detailed components I divide them into three areas:
 [Choe et al.](https://www.aclweb.org/anthology/W19-4423) also take advantage of the copy augmented transformer architecture. This was originally suggested for Grammatical Error Correction by [Zhao et al.](https://arxiv.org/pdf/1903.00138.pdf) who showed improvements by incorporating an output mechanism that allows copying an input token. This makes sense, as whenever an error correction system is not correcting an error, it is simply copying the input.
 
 **Re-ranking** &nbsp; The two top systems in the restricted trackalso re-rank the output sentences from the beam search.
-
 [Choe et al.](https://www.aclweb.org/anthology/W19-4423) notice that many of their model&#39;s corrections are unnatural or incorrect, which they improve by re-ranking using a pre-trained neural language model. In addition, [Grundkiewicz et al.](https://kheafield.com/papers/edinburgh/bea19.pdf) use a right-to-left neural language model as a feature when re-ranking – the motivation being that a right-to-left model can complement the standard left-to-right decoding.
-
 Other approaches use error detection models for re-ranking: [Yuan et al.](https://www.aclweb.org/anthology/W19-4424)re-rank based on features derived from an error detection system while [Kaneko et al.](https://www.aclweb.org/anthology/W19-4422) fine-tune BERT on a sentence level error detection task and use its predictions as a feature for re-ranking. Both these approaches see improved overall score – especially recall, as systems are pushed towards correcting more errors.
 
 **Filtering** &nbsp; [Asano et al.](https://www.aclweb.org/anthology/W19-4418)increase their precision by using a sentence level error detection system to filter sentences without errors before they are passed to the error correction model. This approach is also interesting for industrial use cases, as it could significantly decrease processing time since, in general, the majority of sentences do not contain errors.
@@ -41,9 +39,7 @@ In general, there exist two approaches to generating artificial examples of erro
 2. Back-translation, where a correction model is trained in reverse to insert errors into correct text
 
 **Rule-based generation** &nbsp; The top two contributions in the restricted track both used a rule-based approach.
-
 [Grundkiewicz et al.](https://kheafield.com/papers/edinburgh/bea19.pdf)base their error generation approach on confusion sets extracted from the spell checker Aspell, which bases its suggestions on both lexical and phonological similarity.With a probability matching the word-error rate in the development set, a word is either deleted, swapped with its adjacent word, substituted with a word from its confusion set, or a random word is inserted. Additionally, in order to handle spelling errors, lexical noise is introduced to words, by using the same operations above on the character level.
-
 The runner up, [Choe et al.](https://www.aclweb.org/anthology/W19-4423), attempt to make realistic errors by inserting n-gram patterns from real errors into correct text. They also employ rules for creating specific error types such as preposition, noun number and verb errors. When comparing their error generation approach with one based on random replacements, deletions, insertions and reordering, they see clear benefits. However, the difference is evened out if the model is fine-tuned on real errors.
 
 **Back translation** &nbsp; Since back-translation is not guaranteed to inject errors and could simply paraphrase the sentence, in order to control the data quality [Yuan et al.](https://www.aclweb.org/anthology/W19-4424)filter the artificial sentence-pairs that are likely to be paraphrasing. This way, sentence pairs are filtered if the generated sentence does not have a decreased language model probability higher than a threshold learned from real error examples.
