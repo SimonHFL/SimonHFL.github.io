@@ -18,6 +18,7 @@ When describing the more detailed components I divide them into three areas:
 1.	**Model**: The model’s architecture and decoding techniques
 2.	**Data**: The (artificial) data used to train the model
 3.	**Training**: The training procedure
+
 &nbsp;
 
 ### Model
