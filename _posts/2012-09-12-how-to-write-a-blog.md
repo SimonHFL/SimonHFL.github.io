@@ -14,7 +14,10 @@ Looking through the submissions, two overall trends are clear:
 1.	Neural machine translation approaches are dominating. Previous state-of-the-art approaches, based on rules, classifiers and statistical machine translation, have now been left in the dust.
 2.	It has become standard practice to train systems on massive amounts of artificially generated examples of errors or weakly supervised data (e.g. from the Wikipedia revision history).
 
-
+When describing the more detailed components I divide them into three areas:
+1.	*Model*: The model’s architecture and decoding techniques
+2.	*Data*: The (artificial) data used to train the model
+3.	*Training*: The training procedure
 
 # Welcome
 
