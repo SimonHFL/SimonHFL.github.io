@@ -25,7 +25,7 @@ When describing the more detailed components I divide them into three areas:
 
 **Architecture** &nbsp; The vast majority of submissions are based on a neural machine translation approach, with two-thirds using the transformer architecture while the rest are based on a convolutional sequence-to-sequence architectureor a combination of the two. When comparing the two architectures, [Yuan et al.](https://www.aclweb.org/anthology/W19-4424) see a very large performance gain favoring the transformer model.\
 [Choe et al.](https://www.aclweb.org/anthology/W19-4423) also take advantage of the copy augmented transformer architecture. This was originally suggested for Grammatical Error Correction by [Zhao et al.](https://arxiv.org/pdf/1903.00138.pdf) who showed improvements by incorporating an output mechanism that allows copying an input token. This makes sense, as whenever an error correction system is not correcting an error, it is simply copying the input.
-___
+
 **Re-ranking** &nbsp; The two top systems in the restricted trackalso re-rank the output sentences from the beam search.\
 [Choe et al.](https://www.aclweb.org/anthology/W19-4423) notice that many of their model&#39;s corrections are unnatural or incorrect, which they improve by re-ranking using a pre-trained neural language model. In addition, [Grundkiewicz et al.](https://kheafield.com/papers/edinburgh/bea19.pdf) use a right-to-left neural language model as a feature when re-ranking – the motivation being that a right-to-left model can complement the standard left-to-right decoding.
 Other approaches use error detection models for re-ranking: [Yuan et al.](https://www.aclweb.org/anthology/W19-4424)re-rank based on features derived from an error detection system while [Kaneko et al.](https://www.aclweb.org/anthology/W19-4422) fine-tune BERT on a sentence level error detection task and use its predictions as a feature for re-ranking. Both these approaches see improved overall score – especially recall, as systems are pushed towards correcting more errors.
@@ -33,6 +33,8 @@ Other approaches use error detection models for re-ranking: [Yuan et al.](https:
 **Filtering** &nbsp; [Asano et al.](https://www.aclweb.org/anthology/W19-4418)increase their precision by using a sentence level error detection system to filter sentences without errors before they are passed to the error correction model. This approach is also interesting for industrial use cases, as it could significantly decrease processing time since, in general, the majority of sentences do not contain errors.
 
 **Iterative decoding** &nbsp; With iterative decoding, a sentence is continuously passed through the translation model until the model outputs the sentence unchanged. This allows for correcting the sentence in increments instead of only through one pass, thereby enabling the model to generate more corrections. [Náplava et al.](https://www.aclweb.org/anthology/W19-4419) sees improvements by using iterative decoding, however they increase their recall at the expense of precision. On the contrary, [Grundkiewicz et al.](https://kheafield.com/papers/edinburgh/bea19.pdf)forgo iterative decoding, as they contend it is only necessary if the system has low recall.
+
+---
 
 ### Data
 
@@ -46,6 +48,8 @@ The runner up, [Choe et al.](https://www.aclweb.org/anthology/W19-4423), attempt
 
 **Back translation** &nbsp; Since back-translation is not guaranteed to inject errors and could simply paraphrase the sentence, in order to control the data quality [Yuan et al.](https://www.aclweb.org/anthology/W19-4424)filter the artificial sentence-pairs that are likely to be paraphrasing. This way, sentence pairs are filtered if the generated sentence does not have a decreased language model probability higher than a threshold learned from real error examples.
 
+---
+
 ### Training
 
 **Checkpoint averaging** &nbsp; [Náplava et al.](https://www.aclweb.org/anthology/W19-4419)see improved performance and lower variance by having the weights of the final model being an average of a number of previous checkpoints. For their final model, they end up averaging the 8 latest checkpoints.
@@ -56,6 +60,8 @@ The runner up, [Choe et al.](https://www.aclweb.org/anthology/W19-4423), attempt
 As an alternative to oversampling, [Choe et al.](https://www.aclweb.org/anthology/W19-4423)use a sequential transfer learning approach. This way, their model is trained in a three-stage process: 1) de-noising auto-encoder 2) training 3) fine-tuning.  At each stage, the model is trained on a progressively smaller dataset that is closer to the test domain.
 
 **Multi-task learning** &nbsp; [Yuan et al.](https://www.aclweb.org/anthology/W19-4424)use the Grammatical Error Detection task as an auxiliary learning objective – both by labelling each input token as correct or incorrect and by binary classification if the sentence is correct or not. Their system performs very well on error detection, suggesting that the auxiliary detection task was beneficial.
+
+---
 
 ### Conclusion
 
