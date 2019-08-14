@@ -7,6 +7,7 @@ published: true
 subtitle: >-
   This post presents an overview of the approaches and techniques used in the
   BEA 2019 shared task on Grammatical Error Correction.
+background: /img/posts/correcting-1870721.jpg
 ---
 The recent BEA shared task on Grammatical Error Correction had a total of 24 participating teams with many interesting approaches to the problem &mdash; many of them achieving very impressive results! A wide range of techniques, tweaks and tricks were used and in order to present a more easily comprehensible overview, I have composed a list of my main takeaways.
 
@@ -67,11 +68,3 @@ As an alternative to oversampling, [Choe et al.](https://www.aclweb.org/antholog
 
 The impressive performance of systems in the BEA 2019 shared task show that the Grammatical Error Correction field has taken a great leap forward in the 5 years since the previous shared task, CONLL14. In particular, a lot of success has been achieved by modelling the problem as a low-resource neural machine translation task. Even in this relatively narrow setting, systems are still taking many different directions and many different techniques are being applied.
 Going forward, each of the components I have listed should be explored further, to develop a set of best practices that can serve as the basis for industrial systems and future research directions.
-
-
-
-
-
-
-
-
